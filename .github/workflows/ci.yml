@@ -36,4 +36,10 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Run tests
-      run: make test-all
+      shell: bash
+      run: |
+        if [ -n "$GOPATH" ]; then
+          mkdir -p "$GOPATH"/src/github.com/github
+          ln -svf "$PWD" "$GOPATH"/src/github.com/github/hub
+        fi
+        make test-all
