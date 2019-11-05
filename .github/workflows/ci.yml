@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.9.x', '1.10.x', '1.11.x', '1.12.x', '1.13.x' ]
+        go: [ '1.9', '1.10', '1.11', '1.12', '1.13' ]
 
     steps:
     - uses: actions/checkout@v1
@@ -38,8 +38,8 @@ jobs:
     - name: Run tests
       shell: bash
       run: |
-        if [ -n "$GOPATH" ]; then
-          mkdir -p "$GOPATH"/src/github.com/github
-          ln -svf "$PWD" "$GOPATH"/src/github.com/github/hub
-        fi
+        mkdir -pv "$GOPATH"/src/github.com/github
+        ln -svf "$PWD" "$GOPATH"/src/github.com/github/hub
         make test-all
+      env:
+        GOPATH: $HOME/go
