@@ -47,3 +47,5 @@ jobs:
         ln -svf "$PWD" "$GOPATH"/src/github.com/github/hub
         cd "$GOPATH"/src/github.com/github/hub
         make test-all
+      env:
+        CI: true
