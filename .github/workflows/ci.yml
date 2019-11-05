@@ -15,7 +15,7 @@ jobs:
     - name: Set up Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.x        
+        ruby-version: 2.6.x
 
     - name: Cache gems
       uses: actions/cache@v1
@@ -41,4 +41,5 @@ jobs:
         export GOPATH="$HOME"/go
         mkdir -p "$GOPATH"/src/github.com/github
         ln -svf "$PWD" "$GOPATH"/src/github.com/github/hub
+        cd "$GOPATH"/src/github.com/github/hub
         make test-all
