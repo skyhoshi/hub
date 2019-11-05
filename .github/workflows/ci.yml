@@ -36,7 +36,7 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Install system packages
-      if: runner.os == "Linux"
+      if: runner.os == 'Linux'
       run: sudo apt-get install -y zsh fish
 
     - name: Run tests
